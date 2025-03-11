@@ -11,6 +11,9 @@ services:
       dockerfile: "./Dockerfile"
     volumes:
       - codeql:/codeql
+    # Drop unnecessary Linux capabilities for security
+    cap_drop:
+      - ALL
 
   tp-framework-dev:
     image: tp-framework-dev
@@ -30,6 +33,9 @@ services:
       - ./discovery:/tp-framework/discovery
       - ./qualitytests:/tp-framework/qualitytests
     entrypoint: bash
+    # Drop unnecessary Linux capabilities for security
+    cap_drop:
+      - ALL
 
 volumes:
   codeql:
